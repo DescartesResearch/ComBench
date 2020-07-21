@@ -115,6 +115,7 @@ class Controller:
          If PTP is running, TRUE is returned, otherwise FALSE """
         return not output == ""
 
+
     @staticmethod
     def check_ntp_synchronization():
         p = subprocess.Popen('pgrep ntpd', stdout=subprocess.PIPE, shell=True)
