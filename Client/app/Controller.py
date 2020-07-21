@@ -116,7 +116,7 @@ class Controller:
         return not output == ""
 
     @staticmethod
-    def check_ntp_synchronization(self):
+    def check_ntp_synchronization():
         p = subprocess.Popen('pgrep ntpd', stdout=subprocess.PIPE, shell=True)
         (output, err) = p.communicate()
         if not Controller.is_ntp_synchronized_from_process(output.decode("utf-8")):
