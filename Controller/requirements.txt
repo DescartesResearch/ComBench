@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+hypercorn
+pydantic
+starlette
+pandas
+matplotlib
+requests
+aiofiles

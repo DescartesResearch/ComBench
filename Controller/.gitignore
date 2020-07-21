@@ -1,0 +1,7 @@
+venv/
+.idea/
+__pycache__
+PandasTest.py
+benchmark_run_*/
+results.zip
+*.log

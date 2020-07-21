@@ -1,0 +1,11 @@
+fastapi
+psutil
+apscheduler
+asyncio_mqtt
+paho-mqtt
+pika
+hypercorn
+starlette
+pydantic
+aiocoap
+aiofiles
