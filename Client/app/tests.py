@@ -96,7 +96,6 @@ class TestController(unittest.TestCase):
         # checks if the process command is called
         self.assertTrue(mock_subproc_popen.called)
 
-
     @mock.patch('subprocess.Popen')
     def test_check_ntp_synchronization_enabled(self, mock_subproc_popen):
         # TODO check "check_ntp_synchronization" by mocking
