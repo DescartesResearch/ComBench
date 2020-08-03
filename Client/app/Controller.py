@@ -124,7 +124,6 @@ class Controller:
         else:
             p = subprocess.Popen('ntpstat; echo $?', stdout=subprocess.PIPE, shell=True)
             (output, err) = p.communicate()
-            print(output.decode("utf-8"))
             return Controller.is_ntp_synchronized_from_ntpstat(output.decode('utf-8'))
 
     @staticmethod

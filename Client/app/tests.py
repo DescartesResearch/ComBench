@@ -101,9 +101,11 @@ class TestController(unittest.TestCase):
         # TODO check "check_ntp_synchronization" by mocking
         process_mock = mock.Mock()
         # TODO Replace "foo bar" by some output of installed PTP
-        attrs = {'communicate.return_value': ("synchronised to NTP server (127.51.226.51) at stratum 3\n   time "
+
+        attrs = {'communicate.side_effect': [('18590'.encode('utf-8'), 'error'.encode('utf-8')),
+                                             ("synchronised to NTP server (127.51.226.51) at stratum 3\n   time "
                                               "correct to within 120 ms\n   polling server every 64 s\n0\n\n0\n".encode('utf-8'),
-                                              'error'.encode('utf-8'))}
+                                              'error'.encode('utf-8'))]}
         process_mock.configure_mock(**attrs)
 
         mock_subproc_popen.return_value = process_mock
