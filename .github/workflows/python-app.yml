@@ -33,5 +33,5 @@ jobs:
         python -m unittest
     - name: Test controller with pytest
       run: |
-        cd ../../app/Controller
+        cd Controller/app
         python -m unittest
