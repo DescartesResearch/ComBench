@@ -6,27 +6,28 @@ on:
       - dev
 
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Build and push client Docker image
-      uses: docker/build-push-action@v1
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        file: Client/Dockerfile
-        path: Client
-        repository: descartesresearch/iot-pubsub-benchmark-client
-        tags: latest
+      - name: Build and push client Docker image
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          file: Client/Dockerfile
+          path: Client
+          repository: descartesresearch/iot-pubsub-benchmark-client
+          tags: latest
 
-    - name: Build and push controller Docker image
-      uses: docker/build-push-action@v1
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        file: Controller/Dockerfile
-        path: Controller
-        repository: descartesresearch/iot-pubsub-benchmark-controller
-        tags: latest
+      - name: Build and push controller Docker image
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          file: Controller/Dockerfile
+          path: Controller
+          repository: descartesresearch/iot-pubsub-benchmark-controller
+          tags: latest
