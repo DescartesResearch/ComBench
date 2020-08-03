@@ -27,9 +27,9 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test client with pytest
       run: |
-        cd Client
+        cd Client/app
         pytest
     - name: Test controller with pytest
       run: |
-        cd ../Controller
+        cd ../../app/Controller
         pytest
