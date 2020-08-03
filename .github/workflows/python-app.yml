@@ -23,13 +23,12 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test client with pytest
       run: |
         cd Client/app
-        pytest
+        python -m unittest
     - name: Test controller with pytest
       run: |
         cd ../../app/Controller
-        pytest
+        python -m unittest
