@@ -301,7 +301,10 @@ class Controller:
         if trigger_type == "interval":
             self.scheduler.schedule_start_publishing(topic, timed_variable, value, settings)
         elif trigger_type == "reaction":
-            self.responses[subscription] = [topic, timed_variable, value, settings]
+            if subscription in self.responses:
+                self.responses[subscription].append([topic, timed_variable, value, settings])
+            else:
+                self.responses[subscription] = [[topic, timed_variable, value, settings]]
         self.payloads[topic] = "A" * payload_size
 
     def react(self, topic, message):
@@ -310,7 +313,8 @@ class Controller:
         self.measurements.register_received(identifier, timestamp, topic)
         response = self.responses.get(topic)
         if response is not None:
-            self.scheduler.schedule_reaction(response[0], response[1], response[2], response[3])
+            for rsp in response:
+                self.scheduler.schedule_reaction(rsp[0], rsp[1], rsp[2], rsp[3])
 
     async def publish(self, topic, settings):
         identifier = str(uuid.uuid1())
