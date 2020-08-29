@@ -271,7 +271,6 @@ class Controller:
         await self.adapter.start_client()
 
     async def stop_client(self):
-        await self.adapter.stop_client()
         identifier = uuid.uuid1()
         timestamp = time.time_ns()
         topic = "quit run"
@@ -280,6 +279,7 @@ class Controller:
             self.remove_packet_loss(self.current_packet_loss)
         if self.network_parameters["bandwidth"] or self.network_parameters["delay"]:
             self.remove_qdisc_rules()
+        await self.adapter.stop_client()
 
     def set_adapter(self, protocol, name):
         if protocol == "MQTT":
