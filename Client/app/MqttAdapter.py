@@ -51,10 +51,10 @@ class MqttAdapter:
             self.callback("test", "test", message)
 
     async def stop_client(self):
+        print("disconnecting client")
         await self.client.disconnect()
 
     def callback(self, client, user_data, message):
-        print("callback aufgerufen.")
         self.controller.react(message.topic, message.payload.decode("utf-8"))
 
     def start_loop(self, topic):
