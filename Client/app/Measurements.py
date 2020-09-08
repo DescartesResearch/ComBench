@@ -41,7 +41,7 @@ class CsvFormatter(logging.Formatter):
 
 class Measurements:
 
-    def __init__(self, filename):
+    def __init__(self, filename, devices):
         file = open('{0}.csv'.format(filename), 'w')
         file.truncate(0)
         file.close()
@@ -54,16 +54,17 @@ class Measurements:
         self.measure_logger = setup_logger("measure_logger", "{0}.csv".format(filename), CsvFormatter())
         self.resource_logger = setup_logger("resource_logger", "{0}resources.csv".format(filename), CsvFormatter())
         self.network_logger = setup_logger("network_logger", "{0}network.csv".format(filename), CsvFormatter())
+        self.devices = devices
 
     def measure_resources(self, runtime):
         pid = os.getpid()
         cpu_total = psutil.cpu_percent(percpu=True)
         p = psutil.Process(pid=pid)
 
-        old_bytes_sent = psutil.net_io_counters(pernic=True)["eth0"].bytes_sent
-        old_bytes_rec = psutil.net_io_counters(pernic=True)["eth0"].bytes_recv
-        old_packs_sent = psutil.net_io_counters(pernic=True)["eth0"].packets_sent
-        old_packs_rec = psutil.net_io_counters(pernic=True)["eth0"].packets_recv
+        old_bytes_sent = psutil.net_io_counters(pernic=True)[self.devices[0]].bytes_sent
+        old_bytes_rec = psutil.net_io_counters(pernic=True)[self.devices[1]].bytes_recv
+        old_packs_sent = psutil.net_io_counters(pernic=True)[self.devices[0]].packets_sent
+        old_packs_rec = psutil.net_io_counters(pernic=True)[self.devices[1]].packets_recv
 
         for x in range(runtime):
             cpu_total = psutil.cpu_percent(interval=1, percpu=True)
@@ -72,10 +73,10 @@ class Measurements:
             percent_mem = psutil.virtual_memory().percent
             self.resource_logger.info([cpu_total, cpu_of_process, percent_mem, mem])
 
-            new_bytes_sent = psutil.net_io_counters(pernic=True)["eth0"].bytes_sent
-            new_bytes_rec = psutil.net_io_counters(pernic=True)["eth0"].bytes_recv
-            new_packs_sent = psutil.net_io_counters(pernic=True)["eth0"].packets_sent
-            new_packs_rec = psutil.net_io_counters(pernic=True)["eth0"].packets_recv
+            new_bytes_sent = psutil.net_io_counters(pernic=True)[self.devices[0]].bytes_sent
+            new_bytes_rec = psutil.net_io_counters(pernic=True)[self.devices[1]].bytes_recv
+            new_packs_sent = psutil.net_io_counters(pernic=True)[self.devices[0]].packets_sent
+            new_packs_rec = psutil.net_io_counters(pernic=True)[self.devices[1]].packets_recv
             self.network_logger.info([new_bytes_sent-old_bytes_sent, new_bytes_rec-old_bytes_rec,
                                       new_packs_sent-old_packs_sent, new_packs_rec-old_packs_rec])
 

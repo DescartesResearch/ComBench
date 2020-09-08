@@ -54,9 +54,6 @@ class Controller:
         else:
             await self.adapter.connect(broker_address, settings)
 
-        self.measurements = Measurements.Measurements(name)
-        self.name = name
-
         if protocol == "MQTT":
             if not settings.tls:
                 self.port = 1883
@@ -102,6 +99,12 @@ class Controller:
                 self.set_bandwidth_and_network_delay(bandwidth, delay)
                 self.network_parameters["bandwidth"] = True
                 self.network_parameters["delay"] = True
+
+        if self.network_parameters["bandwidth"] or self.network_parameters["delay"]:
+            self.measurements = Measurements.Measurements(name, ["eth0", "ifb0"])
+        else:
+            self.measurements = Measurements.Measurements(name, ["eth0", "eth0"])
+        self.name = name
 
     @staticmethod
     def check_ptp_synchronization() -> bool:
