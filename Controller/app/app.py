@@ -447,21 +447,21 @@ def evaluate():
                 "Total sent messages: " + str(client_sent_messages) + "\n" + \
                 "Average received messages: " + str(avg_rec_messages) + "\n" + \
                 "Average sent messages: " + str(avg_sent_messages) + "\n" + \
-                "Mean Latency (\xb5s): " + client_latency_mean[0] + "\n" + \
-                "Median Latency (\xb5s): " + client_latency_median[0] + "\n" + \
-                "Minimum Latency (\xb5s): " + client_latency_min[0] + "\n" + \
-                "Maximum Latency (\xb5s): " + client_latency_max[0] + "\n" + \
-                "Latency Standard Deviation (\xb5s): " + client_latency_sd[0] + "\n" + \
-                "Mean Latency (\xb5s) of sent messages: " + client_latency_mean[1] + "\n" + \
-                "Median Latency (\xb5s) of sent messages: " + client_latency_median[1] + "\n" + \
-                "Minimum Latency (\xb5s) of sent messages: " + client_latency_min[1] + "\n" + \
-                "Maximum Latency (\xb5s) of sent messages: " + client_latency_max[1] + "\n" + \
-                "Latency Standard Deviation (\xb5s) of sent messages: " + client_latency_sd[1] + "\n" + \
-                "Mean Latency (\xb5s) of received messages: " + client_latency_mean[2] + "\n" + \
-                "Median Latency (\xb5s) of received messages: " + client_latency_median[2] + "\n" + \
-                "Minimum Latency (\xb5s) of received messages: " + client_latency_min[2] + "\n" + \
-                "Maximum Latency (\xb5s) of received messages: " + client_latency_max[2] + "\n" + \
-                "Latency Standard Deviation (\xb5s) of received messages: " + client_latency_sd[2] + "\n\n"
+                "Mean Latency (ms): " + client_latency_mean[0] + "\n" + \
+                "Median Latency (ms): " + client_latency_median[0] + "\n" + \
+                "Minimum Latency (ms): " + client_latency_min[0] + "\n" + \
+                "Maximum Latency (ms): " + client_latency_max[0] + "\n" + \
+                "Latency Standard Deviation (ms): " + client_latency_sd[0] + "\n" + \
+                "Mean Latency (ms) of sent messages: " + client_latency_mean[1] + "\n" + \
+                "Median Latency (ms) of sent messages: " + client_latency_median[1] + "\n" + \
+                "Minimum Latency (ms) of sent messages: " + client_latency_min[1] + "\n" + \
+                "Maximum Latency (ms) of sent messages: " + client_latency_max[1] + "\n" + \
+                "Latency Standard Deviation (ms) of sent messages: " + client_latency_sd[1] + "\n" + \
+                "Mean Latency (ms) of received messages: " + client_latency_mean[2] + "\n" + \
+                "Median Latency (ms) of received messages: " + client_latency_median[2] + "\n" + \
+                "Minimum Latency (ms) of received messages: " + client_latency_min[2] + "\n" + \
+                "Maximum Latency (ms) of received messages: " + client_latency_max[2] + "\n" + \
+                "Latency Standard Deviation (ms) of received messages: " + client_latency_sd[2] + "\n\n"
             file.write(s)
             warnings = open(dirs["raw_dir"] + '/' + client_names[i] + '-warning.log', 'r').read()
             if warnings is not "":
@@ -546,11 +546,11 @@ def evaluate():
     latency_standard_deviation = str(math.sqrt(merged_dataframe.loc[:, "latency"].var()))
 
     with open(result_dir + "/Summary.txt", mode="a") as file:
-        s = "\nMean Latency (\xb5s): " + latency_mean + \
-            "\nMedian Latency (\xb5s): " + latency_median + \
-            "\nMinimum Latency (\xb5s): " + latency_min + \
-            "\nMaximum Latency (\xb5s): " + latency_max + \
-            "\nLatency Standard Deviation (\xb5s): " + latency_standard_deviation
+        s = "\nMean Latency (ms): " + latency_mean + \
+            "\nMedian Latency (ms): " + latency_median + \
+            "\nMinimum Latency (ms): " + latency_min + \
+            "\nMaximum Latency (ms): " + latency_max + \
+            "\nLatency Standard Deviation (ms): " + latency_standard_deviation
         file.write(s)
 
     # The dataframe is grouped by the uuids (sent messages) and the received messages for every uuid are counted.
