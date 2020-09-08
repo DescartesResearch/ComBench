@@ -97,7 +97,7 @@ async def start_client(client: Client):
     settings = client.settings
 
     role = client.role
-    controller.create_components(name, start_time, run_time, broker_address, protocol, settings)
+    await controller.create_components(name, start_time, run_time, broker_address, protocol, settings)
 
     for subscription in role.subscriptions:
         await controller.manage_subscription(subscription.topic, settings)
@@ -118,7 +118,6 @@ async def start_client(client: Client):
         value = publishing.trigger.timed_variable.delay
         controller.manage_publishing(topic, payload_size, trigger_type, subscription, timed_variable, value, settings)
 
-    ##TODO: Reihenfolge 1.subscriben 2. netzwerk 3. measurement mit richtigem netzwerk device
     await controller.configure(protocol, broker_address, start_time, run_time, quality_class, name, settings)
 
     return client

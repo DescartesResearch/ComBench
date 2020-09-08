@@ -23,7 +23,7 @@ class Controller:
         self.port = None
         self.warning_logger = None
 
-    def create_components(self, name, start_time, runtime, broker_address, protocol, settings):
+    async def create_components(self, name, start_time, runtime, broker_address, protocol, settings):
         self.subscriptions = []
         self.number_of_clients = []
         self.responses = {}
