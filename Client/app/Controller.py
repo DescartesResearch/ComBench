@@ -23,7 +23,7 @@ class Controller:
         self.port = None
         self.warning_logger = None
 
-    def create_components(self, name, start_time, runtime, broker_address):
+    def create_components(self, name, start_time, runtime, broker_address, protocol, settings):
         self.subscriptions = []
         self.number_of_clients = []
         self.responses = {}
@@ -43,8 +43,6 @@ class Controller:
         self.scheduler.schedule_stop()
         self.scheduler.schedule_resource_measuring()
 
-    async def configure(self, protocol, broker_address, start_time, runtime, quality_class, name, settings):
-
         if not self.check_ntp_synchronization():
             self.warning_logger.info("Time is not synchronized with ntp")
         if not self.check_ptp_synchronization():
@@ -55,6 +53,8 @@ class Controller:
             await self.adapter.connect(broker_address)
         else:
             await self.adapter.connect(broker_address, settings)
+
+    async def configure(self, protocol, broker_address, start_time, runtime, quality_class, name, settings):
 
         if protocol == "MQTT":
             if not settings.tls:
