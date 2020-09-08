@@ -97,6 +97,7 @@ async def start_client(client: Client):
     settings = client.settings
 
     role = client.role
+    controller.create_components(name, start_time, run_time, broker_address)
 
     for subscription in role.subscriptions:
         await controller.manage_subscription(subscription.topic, settings)
