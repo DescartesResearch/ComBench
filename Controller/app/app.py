@@ -416,7 +416,7 @@ def evaluate():
         total_sent_packs = network_df["packs_sent"].sum()
         sum_sent_packs += total_sent_packs
         total_rec_packs = network_df["packs_rec"].sum()
-        sum_rec_packs = total_rec_packs
+        sum_rec_packs += total_rec_packs
 
         plot = network_df.plot(y=col_names[0:2], kind="line", linewidth=0.5)
         plot.set_xlabel("run time in seconds")
