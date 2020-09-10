@@ -268,13 +268,19 @@ def evaluate():
         csv_row.append("cpu_total_sd_core_" + str(i))
     csv_row.extend(["cpu_process_mean", "cpu_process_sd", "ram_total_mean", "ram_total_sd", "ram_process_mean",
                     "ram_process_sd", "number_of_rec_messages", "number_of_sent_messages", "avg_of_rec_messages",
-                    "avg_of_sent_messages", "latency_total_mean", "latency_total_median", "latency_total_min",
+                    "avg_of_sent_messages", "total_rec_bytes", "total_sent_bytes", "total_rec_packs", "total_sent_packs",
+                    "latency_total_mean", "latency_total_median", "latency_total_min",
                     "latency_total_max", "latency_total_sd", "latency_sent_mean", "latency_sent_median",
                     "latency_sent_min", "latency_sent_max", "latency_sent_sd", "latency_rec_mean", "latency_rec_median",
                     "latency_rec_min", "latency_rec_max", "latency_rec_sd", "total_losses", "losses_in_percent"])
     with open(result_dir + "/Summary.csv", mode="w") as file:
         csv_writer = csv.writer(file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL)
         csv_writer.writerow(csv_row)
+
+    sum_sent_bytes = 0
+    sum_rec_bytes = 0
+    sum_sent_packs = 0
+    sum_rec_packs = 0
 
     for i in range(number_of_clients):
         client_s_df = pandas.read_csv(dirs["raw_dir"] + '/' + client_names[i] + '.csv',
@@ -403,6 +409,15 @@ def evaluate():
         network_df = pandas.read_csv(dirs["raw_dir"] + "/" + client_names[i] + "-network.csv", names=col_names,
                                       dtype=dtype_dict, header=None)
 
+        total_sent_bytes = network_df["bytes_sent"].sum()
+        sum_sent_bytes += total_sent_bytes
+        total_rec_bytes = network_df["bytes_rec"].sum()
+        sum_rec_bytes += total_rec_bytes
+        total_sent_packs = network_df["packs_sent"].sum()
+        sum_sent_packs += total_sent_packs
+        total_rec_packs = network_df["packs_rec"].sum()
+        sum_rec_packs = total_rec_packs
+
         plot = network_df.plot(y=col_names[0:2], kind="line", linewidth=0.5)
         plot.set_xlabel("run time in seconds")
         plot.set_ylabel("bytes")
@@ -447,6 +462,10 @@ def evaluate():
                 "Total sent messages: " + str(client_sent_messages) + "\n" + \
                 "Average received messages: " + str(avg_rec_messages) + "\n" + \
                 "Average sent messages: " + str(avg_sent_messages) + "\n" + \
+                "Total received bytes: " + str(total_rec_bytes) + "\n" + \
+                "Total sent bytes: " + str(total_sent_bytes) + "\n" + \
+                "Total received packets: " + str(total_rec_packs) + "\n" + \
+                "Total sent packets: " + str(total_sent_packs) + "\n" + \
                 "Mean Latency (ms): " + client_latency_mean[0] + "\n" + \
                 "Median Latency (ms): " + client_latency_median[0] + "\n" + \
                 "Minimum Latency (ms): " + client_latency_min[0] + "\n" + \
@@ -477,7 +496,8 @@ def evaluate():
             csv_row[2 * j + 2] = cpu_total_standard_deviation[j]
         csv_row.extend([cpu_process_mean, cpu_process_standard_deviation, ram_total_mean, ram_total_standard_deviation,
                         ram_process_mean, ram_process_standard_deviation, client_rec_messages, client_sent_messages,
-                        avg_rec_messages, avg_sent_messages, client_latency_mean[0], client_latency_median[0],
+                        avg_rec_messages, avg_sent_messages, total_rec_bytes, total_sent_bytes, total_rec_packs,
+                        total_sent_packs, client_latency_mean[0], client_latency_median[0],
                         client_latency_min[0], client_latency_max[0], client_latency_sd[0], client_latency_mean[1],
                         client_latency_median[1], client_latency_min[1], client_latency_max[1], client_latency_sd[1],
                         client_latency_mean[2], client_latency_median[2], client_latency_min[2], client_latency_max[2],
@@ -590,7 +610,11 @@ def evaluate():
             "\nAverage Sent Messages per Minute: " + str(avg_sen_throughput) + \
             "\nAverage Received Messages per Minute: " + str(avg_rec_throughput) + \
             "\nLost Messages: " + str(total_losses) + \
-            "\nPercentage of Lost Messages: " + str(percent_losses)
+            "\nPercentage of Lost Messages: " + str(percent_losses) + \
+            "\nTotal Number of received bytes: " + str(sum_rec_bytes) + \
+            "\nTotal Number of sent bytes: " + str(sum_sent_bytes) + \
+            "\nTotal Number of received packets: " + str(sum_rec_packs) + \
+            "\nTotal Number of sent packs: " + str(sum_sent_packs)
         file.write(s)
 
     row_length = len(csv_row)
@@ -600,6 +624,10 @@ def evaluate():
     csv_row_last[2 * max_number_of_cores + 8] = send_messages
     csv_row_last[2 * max_number_of_cores + 9] = avg_rec_throughput
     csv_row_last[2 * max_number_of_cores + 10] = avg_sen_throughput
+    csv_row_last[2 * max_number_of_cores + 11] = sum_rec_bytes
+    csv_row_last[2 * max_number_of_cores + 12] = sum_sent_bytes
+    csv_row_last[2 * max_number_of_cores + 13] = sum_rec_packs
+    csv_row_last[2 * max_number_of_cores + 14] = sum_sent_packs
     csv_row_last[-1] = percent_losses
     csv_row_last[-2] = total_losses
     csv_row_last[-13] = latency_standard_deviation
