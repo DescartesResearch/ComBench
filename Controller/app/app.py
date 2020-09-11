@@ -1050,6 +1050,21 @@ def get_summary_csv(run_id):
         return "Benchmark run {0} does not exist".format(run_id)
 
 
+@app.get("/results/bytes+packets")
+def get_bytes_and_packets():
+    run_id = get_id_of_latest_run()
+    path_to_dir = get_path_to_specific_run(run_id)
+    col_names = ["bytes_sent", "bytes_rec", "packs_sent", "packs_rec"]
+    dtype_dict = {"bytes_sent": int, "bytes_rec": int, "packs_sent": int, "packs_rec": int}
+    df = pandas.read_csv(path_to_dir + "/raw_data/Client172.17.0.1:5001-network.csv", names=col_names,
+                                 dtype=dtype_dict, header=None)
+    json_dict = {}
+    json_dict["bytes_sent"] = df.loc[10:20, "bytes_sent"].sum()
+    json_dict["bytes_rec"] = df.loc[10:20, "bytes_rec"].sum()
+    json_dict["packs_sent"] = df.loc[10:20, "packs_sent"].sum()
+    json_dict["packs_rec"] = df.loc[10:20, "packs_rec"].sum()
+    return str(json_dict)
+
 if __name__ == '__main__':
     config = Config()
     config.bind = ["0.0.0.0:5000"]
