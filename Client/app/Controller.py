@@ -313,7 +313,10 @@ class Controller:
                 self.responses[subscription].append([topic, timed_variable, value, settings])
             else:
                 self.responses[subscription] = [[topic, timed_variable, value, settings]]
-        self.payloads[topic] = "A" * payload_size
+        if payload_size <= 36:
+            self.payloads[topic] = ""
+        else:
+            self.payloads[topic] = "A" * (payload_size - 36)
 
     def react(self, topic, message):
         timestamp = time.time_ns()
