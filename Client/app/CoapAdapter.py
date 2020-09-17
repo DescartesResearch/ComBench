@@ -10,7 +10,7 @@ class CoapAdapter:
         self.broker_address = None
         self.protocol = None
 
-    def connect(self, address, settings):
+    def connect(self, address):
         self.broker_address = address
 
     def subscribe(self, topic, qos=None):

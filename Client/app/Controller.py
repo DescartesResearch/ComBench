@@ -49,10 +49,10 @@ class Controller:
             self.warning_logger.info("Time is not synchronized with ptp")
 
         self.set_adapter(protocol, name)
-        if isinstance(self.adapter, AmqpAdapter.AmqpAdapter):
-            await self.adapter.connect(broker_address)
-        else:
+        if isinstance(self.adapter, MqttAdapter.MqttAdapter):
             await self.adapter.connect(broker_address, settings)
+        else:
+            await self.adapter.connect(broker_address)
 
     async def configure(self, protocol, broker_address, start_time, runtime, quality_class, name, settings):
 
