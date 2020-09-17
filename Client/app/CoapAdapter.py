@@ -10,10 +10,10 @@ class CoapAdapter:
         self.broker_address = None
         self.protocol = None
 
-    def connect(self, address):
+    async def connect(self, address):
         self.broker_address = address
 
-    def subscribe(self, topic, qos=None):
+    async def subscribe(self, topic, qos=None):
         new_loop = asyncio.new_event_loop()
         t = threading.Thread(target=self.start_loop, args=(new_loop, topic, ))
         t.start()

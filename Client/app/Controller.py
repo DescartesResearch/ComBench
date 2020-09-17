@@ -52,6 +52,8 @@ class Controller:
         if isinstance(self.adapter, MqttAdapter.MqttAdapter):
             await self.adapter.connect(broker_address, settings)
         else:
+            print(broker_address)
+            print(isinstance(self.adapter, CoapAdapter.CoapAdapter))
             await self.adapter.connect(broker_address)
 
     async def configure(self, protocol, broker_address, start_time, runtime, quality_class, name, settings):
@@ -292,6 +294,7 @@ class Controller:
         elif protocol == "AMQP":
             self.adapter = AmqpAdapter.AmqpAdapter(name, self)
         elif protocol == "CoAP":
+            print("Setting adapter")
             self.adapter = CoapAdapter.CoapAdapter(self)
 
     async def manage_subscription(self, subscription, settings):
