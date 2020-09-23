@@ -85,8 +85,8 @@ class Measurements:
             old_packs_sent = new_packs_sent
             old_packs_rec = new_packs_rec
 
-    def register_received(self, identifier, timestamp, topic):
-        self.measure_logger.info(["r", identifier, timestamp, topic])
+    def register_received(self, identifier, timestamp):
+        self.measure_logger.info(["r", identifier, timestamp, ""])
 
     def register_sent(self, identifier, timestamp, topic):
         self.measure_logger.info(["s", identifier, timestamp, topic])

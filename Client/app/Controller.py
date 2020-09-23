@@ -321,7 +321,7 @@ class Controller:
     def react(self, topic, message):
         timestamp = time.time_ns()
         identifier = message[:36]
-        self.measurements.register_received(identifier, timestamp, topic)
+        self.measurements.register_received(identifier, timestamp)
         response = self.responses.get(topic)
         if response is not None:
             for rsp in response:
