@@ -55,6 +55,7 @@ class Measurements:
         self.resource_logger = setup_logger("resource_logger", "{0}resources.csv".format(filename), CsvFormatter())
         self.network_logger = setup_logger("network_logger", "{0}network.csv".format(filename), CsvFormatter())
         self.devices = devices
+        self.stop = False
 
     def measure_resources(self, runtime):
         pid = os.getpid()
@@ -86,10 +87,13 @@ class Measurements:
             old_packs_rec = new_packs_rec
 
     def register_received(self, identifier, timestamp):
-        self.measure_logger.info(["r", identifier, timestamp, ""])
+        if not self.stop:
+            self.measure_logger.info(["r", identifier, timestamp, ""])
 
     def register_sent(self, identifier, timestamp, topic):
-        self.measure_logger.info(["s", identifier, timestamp, topic])
+        if not self.stop:
+            self.measure_logger.info(["s", identifier, timestamp, topic])
 
     def register_info(self, type, identifier, timestamp, topic):
         self.measure_logger.info([type, identifier, timestamp, topic])
+        self.stop = True

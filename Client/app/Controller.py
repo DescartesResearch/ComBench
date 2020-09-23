@@ -282,11 +282,11 @@ class Controller:
         timestamp = time.time_ns()
         topic = "quit run"
         self.measurements.register_info("q", identifier, timestamp, topic)
-        await self.adapter.stop_client()
         if self.network_parameters["iptables"]:
             self.remove_packet_loss(self.current_packet_loss)
         if self.network_parameters["bandwidth"] or self.network_parameters["delay"]:
             self.remove_qdisc_rules()
+        await self.adapter.stop_client()
 
     def set_adapter(self, protocol, name):
         if protocol == "MQTT":
