@@ -243,8 +243,21 @@ class Controller:
                                  stdout=subprocess.PIPE,
                                  shell=True)
             (output, err) = p.communicate()
+
+        if bandwidth is not None:
+            p = subprocess.Popen("tc class change dev ifb0 parent 1: classid 1:15 htb rate {0}".format(bandwidth),
+                                 stdout=subprocess.PIPE,
+                                 shell=True)
+            (output, err) = p.communicate()
+
         if delay is not None:
             p = subprocess.Popen("tc qdisc change dev eth0 parent 1:15 handle 20: netem delay {0}ms".format(delay),
+                                 stdout=subprocess.PIPE,
+                                 shell=True)
+            (output, err) = p.communicate()
+
+        if delay is not None:
+            p = subprocess.Popen("tc qdisc change dev ifb0 parent 1:15 handle 20: netem delay {0}ms".format(delay),
                                  stdout=subprocess.PIPE,
                                  shell=True)
             (output, err) = p.communicate()
