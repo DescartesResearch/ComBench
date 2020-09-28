@@ -9,11 +9,13 @@ class CoapAdapter:
         self.controller = controller
         self.broker_address = None
         self.protocol = None
+        self.topics = []
 
     async def connect(self, address):
         self.broker_address = address
 
     async def subscribe(self, topic, qos=None):
+        self.topics.append(topic)
         new_loop = asyncio.new_event_loop()
         t = threading.Thread(target=self.start_loop, args=(new_loop, topic, ))
         t.start()
@@ -27,7 +29,10 @@ class CoapAdapter:
         self.protocol = await Context.create_client_context()
 
     async def stop_client(self):
-        pass
+        protocol = await Context.create_client_context()
+        for topic in self.topics:
+            request = Message(code=GET, uri='coap://[{0}]:5683/ps/{1}'.format(self.broker_address, topic), observe=1)
+            pr = protocol.request(request)
 
     def start_loop(self, loop, topic):
         asyncio.set_event_loop(loop)
@@ -36,7 +41,7 @@ class CoapAdapter:
     async def observing(self, topic):
         protocol = await Context.create_client_context()
         # Address for Test Broker: 2402:9400:1000:7::FFFF
-        msg = Message(code=POST, uri="coap://[{0}]:5683/ps".format(self.broker_address), payload=bytes("<{0}>;ct=0;".format(topic), encoding="utf-8"))
+        msg = Message(code=POST, uri="coap://[{0}]:5683/ps".format(self.broker_address), payload=bytes("<{0}>;ct=0".format(topic), encoding="utf-8"))
         response = await protocol.request(msg).response
 
         request = Message(code=GET, uri='coap://[{0}]:5683/ps/{1}'.format(self.broker_address, topic), observe=0)
