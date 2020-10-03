@@ -587,6 +587,8 @@ def evaluate():
         merged_dataframe.loc[(merged_dataframe.index.get_level_values('message_x') == topic), "losses"] = topic_receivers[topic] \
         - merged_dataframe[(merged_dataframe.index.get_level_values('message_x') == topic)].type_y
 
+    merged_dataframe = merged_dataframe.sort_values(by=["runtime_x"])
+
     # The cumulative sum of losses is computed and the graph for the message losses is computed and saved in the result
     # directory with the values that were used to compute these graphs.
     merged_dataframe["sum of losses"] = merged_dataframe.losses.cumsum()
