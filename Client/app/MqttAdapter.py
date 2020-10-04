@@ -20,8 +20,8 @@ class MqttAdapter:
     async def connect(self, address, settings):
         if settings.tls:
             self.client = amqtt.Client(address, client_id=self.name, port=8883)
-            self.client._client.tls_set(cert_reqs=ssl.CERT_NONE)
-            self.client._client.tls_insecure_set(True)
+            # self.client._client.tls_set(cert_reqs=ssl.CERT_NONE)
+            # self.client._client.tls_insecure_set(True)
         else:
             self.client = amqtt.Client(address, client_id=self.name)
         await self.client.connect()
