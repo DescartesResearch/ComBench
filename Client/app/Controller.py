@@ -146,12 +146,12 @@ class Controller:
         return int(output[-2]) == 0
 
     def set_packet_loss(self, loss):
-        cmd = "iptables -A INPUT --sport {0} -m statistic --mode random --probability {1} -j DROP".format(
+        cmd = "iptables -A INPUT -p tcp --sport {0} -m statistic --mode random --probability {1} -j DROP".format(
             self.port, loss)
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         (output, err) = p.communicate()
 
-        cmd = "iptables -A OUTPUT --dport {0} -m statistic --mode random --probability {1} -j DROP".format(
+        cmd = "iptables -A OUTPUT -p tcp --dport {0} -m statistic --mode random --probability {1} -j DROP".format(
             self.port, loss)
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         (output, err) = p.communicate()
@@ -218,20 +218,20 @@ class Controller:
 
     def change_network_configuration(self, packet_loss, bandwidth, delay):
         if packet_loss is not None:
-            cmd = "iptables -D INPUT --sport {0} -m statistic --mode random --probability {1} -j DROP".format(
+            cmd = "iptables -D INPUT -p tcp --sport {0} -m statistic --mode random --probability {1} -j DROP".format(
                 self.port, self.current_packet_loss)
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
             (output, err) = p.communicate()
-            cmd = "iptables -A INPUT --sport {0} -m statistic --mode random --probability {1} -j DROP".format(
+            cmd = "iptables -A INPUT -p tcp --sport {0} -m statistic --mode random --probability {1} -j DROP".format(
                 self.port, packet_loss)
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
             (output, err) = p.communicate()
 
-            cmd = "iptables -D OUTPUT --dport {0} -m statistic --mode random --probability {1} -j DROP".format(
+            cmd = "iptables -D OUTPUT -p tcp --dport {0} -m statistic --mode random --probability {1} -j DROP".format(
                 self.port, self.current_packet_loss)
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
             (output, err) = p.communicate()
-            cmd = "iptables -A OUTPUT --dport {0} -m statistic --mode random --probability {1} -j DROP".format(
+            cmd = "iptables -A OUTPUT -p tcp --dport {0} -m statistic --mode random --probability {1} -j DROP".format(
                 self.port, packet_loss)
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
             (output, err) = p.communicate()
@@ -263,12 +263,12 @@ class Controller:
             (output, err) = p.communicate()
 
     def remove_packet_loss(self, loss):
-        cmd = "iptables -D INPUT --sport {0} -m statistic --mode random --probability {1} -j DROP".format(
+        cmd = "iptables -D INPUT -p tcp --sport {0} -m statistic --mode random --probability {1} -j DROP".format(
             self.port, loss)
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         (output, err) = p.communicate()
 
-        cmd = "iptables -D OUTPUT --dport {0} -m statistic --mode random --probability {1} -j DROP".format(
+        cmd = "iptables -D OUTPUT -p tcp --dport {0} -m statistic --mode random --probability {1} -j DROP".format(
             self.port, loss)
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         (output, err) = p.communicate()
