@@ -22,6 +22,7 @@ class Controller:
         self.current_packet_loss = 0
         self.port = None
         self.warning_logger = None
+        self.tp = ""
 
     async def create_components(self, name, start_time, runtime, broker_address, protocol, settings):
         self.subscriptions = []
@@ -146,13 +147,13 @@ class Controller:
         return int(output[-2]) == 0
 
     def set_packet_loss(self, loss):
-        cmd = "iptables -A INPUT -p tcp --sport {0} -m statistic --mode random --probability {1} -j DROP".format(
-            self.port, loss)
+        cmd = "iptables -A INPUT -p {0} --sport {1} -m statistic --mode random --probability {2} -j DROP".format(
+            self.tp, self.port, loss)
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         (output, err) = p.communicate()
 
-        cmd = "iptables -A OUTPUT -p tcp --dport {0} -m statistic --mode random --probability {1} -j DROP".format(
-            self.port, loss)
+        cmd = "iptables -A OUTPUT -p {0} --dport {1} -m statistic --mode random --probability {2} -j DROP".format(
+            self.tp, self.port, loss)
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         (output, err) = p.communicate()
         self.current_packet_loss = loss
@@ -218,21 +219,21 @@ class Controller:
 
     def change_network_configuration(self, packet_loss, bandwidth, delay):
         if packet_loss is not None:
-            cmd = "iptables -D INPUT -p tcp --sport {0} -m statistic --mode random --probability {1} -j DROP".format(
-                self.port, self.current_packet_loss)
+            cmd = "iptables -D INPUT -p {0} --sport {1} -m statistic --mode random --probability {2} -j DROP".format(
+                self.tp, self.port, self.current_packet_loss)
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
             (output, err) = p.communicate()
-            cmd = "iptables -A INPUT -p tcp --sport {0} -m statistic --mode random --probability {1} -j DROP".format(
-                self.port, packet_loss)
+            cmd = "iptables -A INPUT -p {0} --sport {1} -m statistic --mode random --probability {2} -j DROP".format(
+                self.tp, self.port, packet_loss)
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
             (output, err) = p.communicate()
 
-            cmd = "iptables -D OUTPUT -p tcp --dport {0} -m statistic --mode random --probability {1} -j DROP".format(
-                self.port, self.current_packet_loss)
+            cmd = "iptables -D OUTPUT -p {0} --dport {1} -m statistic --mode random --probability {2} -j DROP".format(
+                self.tp, self.port, self.current_packet_loss)
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
             (output, err) = p.communicate()
-            cmd = "iptables -A OUTPUT -p tcp --dport {0} -m statistic --mode random --probability {1} -j DROP".format(
-                self.port, packet_loss)
+            cmd = "iptables -A OUTPUT -p {0} --dport {1} -m statistic --mode random --probability {2} -j DROP".format(
+                self.tp, self.port, packet_loss)
             p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
             (output, err) = p.communicate()
 
@@ -263,13 +264,13 @@ class Controller:
             (output, err) = p.communicate()
 
     def remove_packet_loss(self, loss):
-        cmd = "iptables -D INPUT -p tcp --sport {0} -m statistic --mode random --probability {1} -j DROP".format(
-            self.port, loss)
+        cmd = "iptables -D INPUT -p {0} --sport {1} -m statistic --mode random --probability {2} -j DROP".format(
+            self.tp, self.port, loss)
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         (output, err) = p.communicate()
 
-        cmd = "iptables -D OUTPUT -p tcp --dport {0} -m statistic --mode random --probability {1} -j DROP".format(
-            self.port, loss)
+        cmd = "iptables -D OUTPUT -p {0} --dport {1} -m statistic --mode random --probability {2} -j DROP".format(
+            self.tp, self.port, loss)
         p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         (output, err) = p.communicate()
         # output an Benchmark suite zurückgeben
@@ -304,11 +305,14 @@ class Controller:
     def set_adapter(self, protocol, name):
         if protocol == "MQTT":
             self.adapter = MqttAdapter.MqttAdapter(name, self)
+            self.tp = "tcp"
         elif protocol == "AMQP":
             self.adapter = AmqpAdapter.AmqpAdapter(name, self)
+            self.tp = "tcp"
         elif protocol == "CoAP":
             print("Setting adapter")
             self.adapter = CoapAdapter.CoapAdapter(self)
+            self.tp = "udp"
 
     async def manage_subscription(self, subscription, settings):
         self.subscriptions.append(subscription)
