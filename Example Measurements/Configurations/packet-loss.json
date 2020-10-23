@@ -1,0 +1,70 @@
+{
+  "protocol": "MQTT",
+  "delay": 5,
+  "run_time": 20,
+  "broker_address": "192.168.178.87",
+
+  "quality_classes": [
+    {
+      "id": 0
+    },
+    {
+      "id": 1,
+      "packet_loss": 0.05
+    }
+  ],
+
+  "roles" : [
+    {
+      "id": 0,
+      "subscriptions" : [
+      ],
+      "publishings" : [
+        {
+          "topic" : "data",
+          "payload_size" : 100,
+          "trigger" : {
+            "type" : "interval",
+            "timed_variable" : {
+              "type" : "rate",
+              "delay" : "100"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "subscriptions" : [
+        { "topic" : "data"}
+      ],
+      "publishings" : [
+      ]
+    }
+  ],
+
+  "clients": [
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5001,
+      "role": 0,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5002,
+      "role": 1,
+      "quality_class": 1,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    }
+  ]
+}

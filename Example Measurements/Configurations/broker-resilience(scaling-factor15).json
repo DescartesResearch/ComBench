@@ -1,0 +1,3036 @@
+{
+  "protocol": "MQTT",
+  "delay": 10,
+  "run_time": 60,
+  "broker_address": "192.168.178.87",
+  "quality_classes": [
+    {
+      "id": 0
+    }
+  ],
+  "roles": [
+    {
+      "id": 0,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM0orderConf"
+        },
+        {
+          "topic": "supermarketsSM0shipInfo"
+        },
+        {
+          "topic": "supermarketsSM0inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC0orderSM0",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM0shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM0orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC0shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM0orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM0inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ0statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM1orderConf"
+        },
+        {
+          "topic": "supermarketsSM1shipInfo"
+        },
+        {
+          "topic": "supermarketsSM1inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC1orderSM1",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM1shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM1orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM1orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM1inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ1statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM2orderConf"
+        },
+        {
+          "topic": "supermarketsSM2shipInfo"
+        },
+        {
+          "topic": "supermarketsSM2inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC2orderSM2",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM2shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM2orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM2orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM2inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ2statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM3orderConf"
+        },
+        {
+          "topic": "supermarketsSM3shipInfo"
+        },
+        {
+          "topic": "supermarketsSM3inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC0orderSM3",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM3shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM3orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC0shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM3orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM3inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ3statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM4orderConf"
+        },
+        {
+          "topic": "supermarketsSM4shipInfo"
+        },
+        {
+          "topic": "supermarketsSM4inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC1orderSM4",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM4shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM4orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM4orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM4inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ0statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM5orderConf"
+        },
+        {
+          "topic": "supermarketsSM5shipInfo"
+        },
+        {
+          "topic": "supermarketsSM5inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC2orderSM5",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM5shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM5orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM5orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM5inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ1statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM6orderConf"
+        },
+        {
+          "topic": "supermarketsSM6shipInfo"
+        },
+        {
+          "topic": "supermarketsSM6inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC0orderSM6",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM6shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM6orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC0shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM6orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM6inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ2statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM7orderConf"
+        },
+        {
+          "topic": "supermarketsSM7shipInfo"
+        },
+        {
+          "topic": "supermarketsSM7inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC1orderSM7",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM7shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM7orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM7orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM7inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ3statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM8orderConf"
+        },
+        {
+          "topic": "supermarketsSM8shipInfo"
+        },
+        {
+          "topic": "supermarketsSM8inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC2orderSM8",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM8shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM8orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM8orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM8inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ0statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM9orderConf"
+        },
+        {
+          "topic": "supermarketsSM9shipInfo"
+        },
+        {
+          "topic": "supermarketsSM9inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC0orderSM9",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM9shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM9orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC0shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM9orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM9inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ1statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM10orderConf"
+        },
+        {
+          "topic": "supermarketsSM10shipInfo"
+        },
+        {
+          "topic": "supermarketsSM10inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC1orderSM10",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM10shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM10orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM10orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM10inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ2statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM11orderConf"
+        },
+        {
+          "topic": "supermarketsSM11shipInfo"
+        },
+        {
+          "topic": "supermarketsSM11inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC2orderSM11",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM11shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM11orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM11orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM11inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ3statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM12orderConf"
+        },
+        {
+          "topic": "supermarketsSM12shipInfo"
+        },
+        {
+          "topic": "supermarketsSM12inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC0orderSM12",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM12shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM12orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC0shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM12orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM12inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ0statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM13orderConf"
+        },
+        {
+          "topic": "supermarketsSM13shipInfo"
+        },
+        {
+          "topic": "supermarketsSM13inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC1orderSM13",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM13shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM13orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM13orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM13inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ1statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "subscriptions": [
+        {
+          "topic": "supermarketsSM14orderConf"
+        },
+        {
+          "topic": "supermarketsSM14shipInfo"
+        },
+        {
+          "topic": "supermarketsSM14inventoryInfo"
+        },
+        {
+          "topic": "supermarketspriceUpdate"
+        },
+        {
+          "topic": "supermarketsproductAnnouncement"
+        },
+        {
+          "topic": "supermarketscreditCardHL"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC2orderSM14",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "649"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM14shipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM14orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2shipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supermarketsSM14orderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM14inventoryInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "296"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ2statInfoSM",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "86"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "subscriptions": [
+        {
+          "topic": "distributionCentersDC0orderSM0"
+        },
+        {
+          "topic": "distributionCentersDC0orderSM3"
+        },
+        {
+          "topic": "distributionCentersDC0orderSM6"
+        },
+        {
+          "topic": "distributionCentersDC0orderSM9"
+        },
+        {
+          "topic": "distributionCentersDC0orderSM12"
+        },
+        {
+          "topic": "distributionCentersDC0shipDep"
+        },
+        {
+          "topic": "distributionCentersDC0shipConf"
+        },
+        {
+          "topic": "distributionCentersDC0offerSP0"
+        },
+        {
+          "topic": "distributionCentersDC0offerSP1"
+        },
+        {
+          "topic": "distributionCentersDC0offerSP2"
+        },
+        {
+          "topic": "distributionCentersDC0offerSP3"
+        },
+        {
+          "topic": "distributionCentersDC0offerSP4"
+        },
+        {
+          "topic": "distributionCentersDC0offerSP5"
+        },
+        {
+          "topic": "distributionCentersDC0pOrderConf"
+        },
+        {
+          "topic": "distributionCentersDC0pShipInfo"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC0shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM0",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM0orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM0",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ0statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM0",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC0shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM3",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM3orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM3",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ0statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM3",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC0shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM6",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM6orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM6",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ0statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM6",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC0shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM9",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM9orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM9",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ0statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM9",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC0shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM12",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM12orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM12",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ0statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0orderSM12",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "suppliercallForOffersDC0",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "468"
+            }
+          }
+        },
+        {
+          "topic": "supplierSP0pOrderDC0",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0offerSP0",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC0pShipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0pOrderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supplierSP0pShipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0pOrderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ0statInfoShipDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC0pOrderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "subscriptions": [
+        {
+          "topic": "distributionCentersDC1orderSM1"
+        },
+        {
+          "topic": "distributionCentersDC1orderSM4"
+        },
+        {
+          "topic": "distributionCentersDC1orderSM7"
+        },
+        {
+          "topic": "distributionCentersDC1orderSM10"
+        },
+        {
+          "topic": "distributionCentersDC1orderSM13"
+        },
+        {
+          "topic": "distributionCentersDC1shipDep"
+        },
+        {
+          "topic": "distributionCentersDC1shipConf"
+        },
+        {
+          "topic": "distributionCentersDC1offerSP0"
+        },
+        {
+          "topic": "distributionCentersDC1offerSP1"
+        },
+        {
+          "topic": "distributionCentersDC1offerSP2"
+        },
+        {
+          "topic": "distributionCentersDC1offerSP3"
+        },
+        {
+          "topic": "distributionCentersDC1offerSP4"
+        },
+        {
+          "topic": "distributionCentersDC1offerSP5"
+        },
+        {
+          "topic": "distributionCentersDC1pOrderConf"
+        },
+        {
+          "topic": "distributionCentersDC1pShipInfo"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC1shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM1",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM1orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM1",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ1statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM1",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM4",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM4orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM4",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ1statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM4",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM7",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM7orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM7",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ1statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM7",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM10",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM10orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM10",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ1statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM10",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM13",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM13orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM13",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ1statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1orderSM13",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "suppliercallForOffersDC1",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "468"
+            }
+          }
+        },
+        {
+          "topic": "supplierSP1pOrderDC1",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1offerSP1",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1pShipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1pOrderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supplierSP1pShipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1pOrderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ1statInfoShipDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC1pOrderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "subscriptions": [
+        {
+          "topic": "distributionCentersDC2orderSM2"
+        },
+        {
+          "topic": "distributionCentersDC2orderSM5"
+        },
+        {
+          "topic": "distributionCentersDC2orderSM8"
+        },
+        {
+          "topic": "distributionCentersDC2orderSM11"
+        },
+        {
+          "topic": "distributionCentersDC2orderSM14"
+        },
+        {
+          "topic": "distributionCentersDC2shipDep"
+        },
+        {
+          "topic": "distributionCentersDC2shipConf"
+        },
+        {
+          "topic": "distributionCentersDC2offerSP0"
+        },
+        {
+          "topic": "distributionCentersDC2offerSP1"
+        },
+        {
+          "topic": "distributionCentersDC2offerSP2"
+        },
+        {
+          "topic": "distributionCentersDC2offerSP3"
+        },
+        {
+          "topic": "distributionCentersDC2offerSP4"
+        },
+        {
+          "topic": "distributionCentersDC2offerSP5"
+        },
+        {
+          "topic": "distributionCentersDC2pOrderConf"
+        },
+        {
+          "topic": "distributionCentersDC2pShipInfo"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC2shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM2",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM2orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM2",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ2statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM2",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM5",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM5orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM5",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ2statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM5",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM8",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM8orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM8",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ2statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM8",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM11",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM11orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM11",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ2statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM11",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2shipDep",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM14",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsSM14orderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM14",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ2statInfoOrderDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2orderSM14",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "suppliercallForOffersDC2",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "468"
+            }
+          }
+        },
+        {
+          "topic": "supplierSP2pOrderDC2",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2offerSP2",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2pShipInfo",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2pOrderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "supplierSP2pShipConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2pOrderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ2statInfoShipDC",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "distributionCentersDC2pOrderConf",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "subscriptions": [
+        {
+          "topic": "supplierSP0pOrderDC0"
+        },
+        {
+          "topic": "supplierSP0pShipConf"
+        },
+        {
+          "topic": "suppliercallForOffersDC0"
+        },
+        {
+          "topic": "suppliercallForOffersDC1"
+        },
+        {
+          "topic": "suppliercallForOffersDC2"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC0offerSP0",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC0",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1offerSP0",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC1",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2offerSP0",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC2",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ0invoice",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supplierSP0pOrderDC0",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC0pOrderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supplierSP0pOrderDC0",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "subscriptions": [
+        {
+          "topic": "supplierSP1pOrderDC1"
+        },
+        {
+          "topic": "supplierSP1pShipConf"
+        },
+        {
+          "topic": "suppliercallForOffersDC0"
+        },
+        {
+          "topic": "suppliercallForOffersDC1"
+        },
+        {
+          "topic": "suppliercallForOffersDC2"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC0offerSP1",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC0",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1offerSP1",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC1",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2offerSP1",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC2",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ1invoice",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supplierSP1pOrderDC1",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1pOrderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supplierSP1pOrderDC1",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "subscriptions": [
+        {
+          "topic": "supplierSP2pOrderDC2"
+        },
+        {
+          "topic": "supplierSP2pShipConf"
+        },
+        {
+          "topic": "suppliercallForOffersDC0"
+        },
+        {
+          "topic": "suppliercallForOffersDC1"
+        },
+        {
+          "topic": "suppliercallForOffersDC2"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC0offerSP2",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC0",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1offerSP2",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC1",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2offerSP2",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC2",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "headquarterHQ2invoice",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supplierSP2pOrderDC2",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2pOrderConf",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "supplierSP2pOrderDC2",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "subscriptions": [
+        {
+          "topic": "suppliercallForOffersDC0"
+        },
+        {
+          "topic": "suppliercallForOffersDC1"
+        },
+        {
+          "topic": "suppliercallForOffersDC2"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC0offerSP3",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC0",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1offerSP3",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC1",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2offerSP3",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC2",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "subscriptions": [
+        {
+          "topic": "suppliercallForOffersDC0"
+        },
+        {
+          "topic": "suppliercallForOffersDC1"
+        },
+        {
+          "topic": "suppliercallForOffersDC2"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC0offerSP4",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC0",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1offerSP4",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC1",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2offerSP4",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC2",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "subscriptions": [
+        {
+          "topic": "suppliercallForOffersDC0"
+        },
+        {
+          "topic": "suppliercallForOffersDC1"
+        },
+        {
+          "topic": "suppliercallForOffersDC2"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "distributionCentersDC0offerSP5",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC0",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC1offerSP5",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC1",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        },
+        {
+          "topic": "distributionCentersDC2offerSP5",
+          "payload_size": 128,
+          "trigger": {
+            "type": "reaction",
+            "subscription": "suppliercallForOffersDC2",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "subscriptions": [
+        {
+          "topic": "headquarterHQ0invoice"
+        },
+        {
+          "topic": "headquarterHQ0statInfoOrderDC"
+        },
+        {
+          "topic": "headquarterHQ0statInfoShipDC"
+        },
+        {
+          "topic": "headquarterHQ0statInfoSM"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "supermarketspriceUpdate",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "666"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsproductAnnouncement",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "351"
+            }
+          }
+        },
+        {
+          "topic": "supermarketscreditCardHL",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "433"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "subscriptions": [
+        {
+          "topic": "headquarterHQ1invoice"
+        },
+        {
+          "topic": "headquarterHQ1statInfoOrderDC"
+        },
+        {
+          "topic": "headquarterHQ1statInfoShipDC"
+        },
+        {
+          "topic": "headquarterHQ1statInfoSM"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "supermarketspriceUpdate",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "666"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsproductAnnouncement",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "351"
+            }
+          }
+        },
+        {
+          "topic": "supermarketscreditCardHL",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "433"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "subscriptions": [
+        {
+          "topic": "headquarterHQ2invoice"
+        },
+        {
+          "topic": "headquarterHQ2statInfoOrderDC"
+        },
+        {
+          "topic": "headquarterHQ2statInfoShipDC"
+        },
+        {
+          "topic": "headquarterHQ2statInfoSM"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "supermarketspriceUpdate",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "666"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsproductAnnouncement",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "351"
+            }
+          }
+        },
+        {
+          "topic": "supermarketscreditCardHL",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "433"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "subscriptions": [
+        {
+          "topic": "headquarterHQ3invoice"
+        },
+        {
+          "topic": "headquarterHQ3statInfoOrderDC"
+        },
+        {
+          "topic": "headquarterHQ3statInfoShipDC"
+        },
+        {
+          "topic": "headquarterHQ3statInfoSM"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "supermarketspriceUpdate",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "666"
+            }
+          }
+        },
+        {
+          "topic": "supermarketsproductAnnouncement",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "351"
+            }
+          }
+        },
+        {
+          "topic": "supermarketscreditCardHL",
+          "payload_size": 128,
+          "trigger": {
+            "type": "interval",
+            "timed_variable": {
+              "type": "rate",
+              "delay": "433"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5001,
+      "role": 0,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5002,
+      "role": 1,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5003,
+      "role": 2,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5004,
+      "role": 3,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5005,
+      "role": 4,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5006,
+      "role": 5,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5007,
+      "role": 6,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5008,
+      "role": 7,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5009,
+      "role": 8,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5010,
+      "role": 9,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5011,
+      "role": 10,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5012,
+      "role": 11,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5013,
+      "role": 12,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5014,
+      "role": 13,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5015,
+      "role": 14,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5016,
+      "role": 15,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5017,
+      "role": 16,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5018,
+      "role": 17,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5019,
+      "role": 18,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5020,
+      "role": 19,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5021,
+      "role": 20,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5022,
+      "role": 21,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5023,
+      "role": 22,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5024,
+      "role": 23,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5025,
+      "role": 24,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5026,
+      "role": 25,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5027,
+      "role": 26,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5028,
+      "role": 27,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    }
+  ]
+}

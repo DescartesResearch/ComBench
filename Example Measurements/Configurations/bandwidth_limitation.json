@@ -1,0 +1,95 @@
+{
+  "protocol": "CoAP",
+  "delay": 5,
+  "run_time": 120,
+  "broker_address": "172.18.0.2",
+
+  "quality_classes": [
+    {
+      "id": 0
+    },
+    {
+      "id": 1,
+      "time_series": [
+        [
+          0,
+          null,
+          "100kbps",
+          null
+        ],
+        [
+          20,
+          null,
+          "30kbps",
+          null
+        ],
+        [
+          50,
+          null,
+          "2kbps",
+          null
+        ],
+        [
+          80,
+          null,
+          "500kbps",
+          null
+        ]
+      ]
+    }
+  ],
+
+  "roles" : [
+    {
+      "id": 0,
+      "subscriptions" : [
+      ],
+      "publishings" : [
+        {
+          "topic" : "data",
+          "payload_size" : 1000,
+          "trigger" : {
+            "type" : "interval",
+            "timed_variable" : {
+              "type" : "rate",
+              "delay" : "15"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "subscriptions" : [
+        { "topic" : "data"}
+      ],
+      "publishings" : [
+      ]
+    }
+  ],
+
+  "clients": [
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5001,
+      "role": 0,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.18.0.1",
+      "begin_port": 5002,
+      "role": 1,
+      "quality_class": 1,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    }
+  ]
+}
