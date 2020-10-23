@@ -736,7 +736,7 @@ def get_raw_resources(run_id):
         return "Benchmark run {0} does not exist".format(run_id)
 
 
-@app.get("/raw_date/network")
+@app.get("/raw_data/network")
 def get_raw_network():
     run_id = get_id_of_latest_run()
     return get_raw_network(run_id)
@@ -773,7 +773,7 @@ def get_cpu_graph(run_id):
                 for file in files:
                     if "CPU" in file:
                         myzip.write(path_to_dir + "/" + file, file)
-        return FileResponse(path_to_dir + "/resources.zip")
+        return FileResponse(path_to_dir + "/cpu_graph.zip")
     else:
         return "Benchmark run {0} does not exist".format(run_id)
 
@@ -781,7 +781,7 @@ def get_cpu_graph(run_id):
 @app.get("/results/ram_graphs")
 def get_ram_graph():
     run_id = get_id_of_latest_run()
-    return get_cpu_graph(run_id)
+    return get_ram_graph(run_id)
 
 
 @app.get("/results/ram_graphs/{run_id}")
@@ -794,7 +794,49 @@ def get_ram_graph(run_id):
                 for file in files:
                     if "ram" in file:
                         myzip.write(path_to_dir + "/" + file, file)
-        return FileResponse(path_to_dir + "/resources.zip")
+        return FileResponse(path_to_dir + "/ram_graph.zip")
+    else:
+        return "Benchmark run {0} does not exist".format(run_id)
+
+
+@app.get("/results/bytes_graphs")
+def get_bytes_graph():
+    run_id = get_id_of_latest_run()
+    return get_bytes_graph(run_id)
+
+
+@app.get("/results/bytes_graphs/{run_id}")
+def get_bytes_graph(run_id):
+    path_to_dir = get_path_to_specific_run(run_id) + "/results"
+    if path_to_dir is not None:
+        files = [f for f in listdir(path_to_dir)]
+        if not os.path.exists(path_to_dir + "/bytes_graph.zip"):
+            with zipfile.ZipFile(path_to_dir + '/bytes_graph.zip', 'w') as myzip:
+                for file in files:
+                    if "bytes" in file:
+                        myzip.write(path_to_dir + "/" + file, file)
+        return FileResponse(path_to_dir + "/bytes_graph.zip")
+    else:
+        return "Benchmark run {0} does not exist".format(run_id)
+
+
+@app.get("/results/packets_graphs")
+def get_packets_graph():
+    run_id = get_id_of_latest_run()
+    return get_packets_graph(run_id)
+
+
+@app.get("/results/packets_graphs/{run_id}")
+def get_packets_graph(run_id):
+    path_to_dir = get_path_to_specific_run(run_id) + "/results"
+    if path_to_dir is not None:
+        files = [f for f in listdir(path_to_dir)]
+        if not os.path.exists(path_to_dir + "/packets_graph.zip"):
+            with zipfile.ZipFile(path_to_dir + '/packets_graph.zip', 'w') as myzip:
+                for file in files:
+                    if "packets" in file:
+                        myzip.write(path_to_dir + "/" + file, file)
+        return FileResponse(path_to_dir + "/packets_graph.zip")
     else:
         return "Benchmark run {0} does not exist".format(run_id)
 

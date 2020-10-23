@@ -1,21 +1,23 @@
 {
   "protocol": "MQTT",
-  "delay": 10,
+  "delay": 5,
   "start_time": null,
   "run_time": 30,
-  "broker_address": "192.168.178.82",
+  "broker_address": "192.168.178.87",
   "quality_classes": [
     {
       "id": 0,
       "packet_loss": null,
       "bandwidth": null,
-      "delay": null
+      "delay": null,
+      "time_series": null
     },
     {
       "id": 1,
       "packet_loss": null,
       "bandwidth": null,
-      "delay": null
+      "delay": null,
+      "time_series": null
     }
   ],
   "roles": [
@@ -37,7 +39,7 @@
           "topic": "Heizung/Schlafzimmer",
           "payload_size": 10,
           "trigger": {
-            "type": "response",
+            "type": "reaction",
             "subscription": "Temperatur/Schlafzimmer",
             "timed_variable": {
               "type": "fixedDelay",
@@ -49,7 +51,7 @@
           "topic": "Heizung/K\u00fcche",
           "payload_size": 10,
           "trigger": {
-            "type": "response",
+            "type": "reaction",
             "subscription": "Temperatur/K\u00fcche",
             "timed_variable": {
               "type": "fixedDelay",
@@ -61,7 +63,7 @@
           "topic": "Heizung/Flur",
           "payload_size": 10,
           "trigger": {
-            "type": "response",
+            "type": "reaction",
             "subscription": "Temperatur/Flur",
             "timed_variable": {
               "type": "fixedDelay",
