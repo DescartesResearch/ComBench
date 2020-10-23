@@ -1,4 +1,4 @@
-#Example Measurements
+# Example Measurements
 This directory contains some examples that showcase several scenarios that can
 be analysed with this benchmark. This includes the efficiency of different 
 protocols and the QoS levels of MQTT, broker resiliency, and the impact of TLS 
@@ -6,7 +6,7 @@ on CPU utilization with MQTT, as well as network limitations. For each scenario
 there is a Graph depicting the result, the raw measurement values, that were 
 extracted from the benchmark results, as well as the used configuration.
 
-##Broker Resilience
+## Broker Resilience
 To test the broker resilience we used the supermarket supply chain workload scenario from the SPECjms2007
 benchmark to see how different broker implementations for MQTT perform under 
 increasing load. Here we increased the number of clients through the horizontal 
@@ -15,7 +15,7 @@ scaling as described in the SPECjms2007 design notes. The scaling factors 1, 5,
 
 ![alternative Text](../images/broker-resilience.png)
 
-##Protocol Efficiency
+## Protocol Efficiency
 This scenario is aimed to analyze the efficiency of the MQTT, AMQP, and CoAP 
 protocols at different payload sizes. The efficiency of the protocols in this 
 case is the ratio between the payload of all messages and the total amount of 
@@ -31,7 +31,7 @@ bytes.
 
 ![alternative Text](../images/efficiency-mqtt-qos.png)
 
-##Effect of Packet Loss
+## Effect of Packet Loss
 
 To investigate the effect of packet loss on MQTT and AMQP we configured the 
 benchmark to send 10 messages per second with a runtime of 20 seconds. The 
@@ -41,7 +41,7 @@ calculated.
 
 ![alternative Text](../images/packet-loss.png)
 
-##Impact of TLS for MQTT on CPU utilization
+## Impact of TLS for MQTT on CPU utilization
 
 In this scenario we analyzed the impact of TLS with the MQTT protocol with different
 message frequencies. Here we looked at the average CPU utilization of the client process in 
@@ -51,7 +51,7 @@ of 100 bytes. The message frequency ranged from 20 to 100 messages per second.
 ![alternative Text](../images/mqtt-tls-impact.png)
 
 
-##Bandwidth Limitation
+## Bandwidth Limitation
 
 The last scenario showcases the impact of a varying connection quality in respect to 
 available bandwidth. To simulate this we set a bandwidth limit that changes during runtime.
