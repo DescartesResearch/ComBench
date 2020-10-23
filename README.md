@@ -1,8 +1,9 @@
-# Publish / Subscribe Benchmark
+# ComBench2020: A Benchmark for Publish/Subscribe Communication Protocols in IoT Systems
 
 ## Introduction
 
-With this benchmark communication scenarios with different publish/subscribe network protocols can be tested.
+The repository hosts our IoT communication benchmark *ComBench2020*, focusing on publish/subscribe protocols in the IoT context.
+With this benchmark, communication scenarios with different publish/subscribe network protocols can be tested.
 The application layer protocol to be used can be selected from MQTT, AMQP, and CoAP at the beginning of a measurement.
 The workload can be flexibly defined by a simple configuration. The benchmark provides a controller for central control and evaluation of the measurement results.
 The provided multi-protocol client can be easily instantiated on multiple nodes, allowing the number of clients to be scaled up. During the measurement, latency, message throughput, and resource consumption are captured.
