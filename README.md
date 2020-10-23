@@ -96,8 +96,13 @@ client:
     image: "descartesresearch/iot-pubsub-benchmark-client:latest"
     ports:
       - "<port on host>:5000"
+    privileged: true
     cap_add:
-      - NET_ADMIN
+      - ALL
+    volumes:
+      - /dev:/dev
+      - /lib/modules:/lib/modules
+      
 ```
 Note: You have to select different ports if multiple clients are instantiated on the same host.
 
@@ -116,7 +121,7 @@ docker run -d -p 5000:5000 descartesresearch/iot-pubsub-benchmark-controller
 
 Start multiple clients via
 ```shell
-docker run --cap-add NET_ADMIN -d -p 5000:5000 descartesresearch/iot-pubsub-benchmark-client
+docker run --cap-add ALL -d -p 5000:5000 -v /dev:/dev -v /lib/modules:/lib/modules descartesresearch/iot-pubsub-benchmark-client
 ```
 Note: You have to select different ports if multiple clients are instantiated on the same host.
 
