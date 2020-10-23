@@ -280,6 +280,11 @@ Depicts the RAM load of each client and the amount of RAM that is used by the cl
 ## Network Packets and Bytes
 
 This is a measurement of all transferred packets and bytes per client.
+
+**Measurement method:** Every second the count of all received and sent packets as well as bytes of the client is evaluated.
+
+**Representation:**
+
 * Sent and received packets and bytes per client as csv in `raw_data/Client{address}:{port}-network.csv` or via `http://<benchmark-controller>:5000/raw_data/network`
 ([Example](docs/results_example/raw_data/Client172.17.0.1:5001-network.csv))
 * Sent and received bytes per client as graph in `results/bytes-Client{address}:{port}.pdf` or via `http://<benchmark-controller>:5000/results/bytes_graphs`
