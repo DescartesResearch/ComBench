@@ -25,6 +25,8 @@ import pandas
 import matplotlib.pyplot as plt
 import math
 import csv
+import asyncio
+import threading
 
 app = FastAPI()
 client_info = []
@@ -100,76 +102,6 @@ def hello_world():
     return 'Hello World!'
 
 
-@app.put('/startBenchmark')
-def start_benchmark(configuration: Configuration):
-    client_info.clear()
-    run_info.clear()
-    topic_receivers.clear()
-
-    protocol = configuration.protocol
-
-    # start time in iso 8601
-    if configuration.start_time is not None:
-        start_time = configuration.start_time
-        start_time = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S%z').timestamp() + configuration.delay
-    else:
-        start_time = time.time() + configuration.delay
-        # start_time = datetime.fromtimestamp(int(time.time()) + configuration.delay).isoformat()
-
-    run_time = configuration.run_time
-
-    # save run and start time
-    run_info.append(run_time)
-    run_info.append(start_time)
-
-    broker_address = configuration.broker_address
-
-    quality_classes = configuration.quality_classes
-
-    roles = configuration.roles
-
-    clients = configuration.clients
-
-    json_data = {"protocol": protocol, "start_time": start_time, "run_time": run_time, "broker_address": broker_address}
-
-    addresses = []
-
-    for client in clients:
-        json_data["role"] = roles[int(client.role)]
-        class_index = client.quality_class
-        if class_index is not None:
-            json_data["quality_class"] = quality_classes[class_index]
-        if client.settings is not None:
-            json_data["settings"] = client.settings
-
-        for subscription in json_data["role"].subscriptions:
-            if topic_receivers.get(subscription.topic) is None:
-                topic_receivers[subscription.topic] = client.amount
-            else:
-                topic_receivers[subscription.topic] += client.amount
-
-        address = client.ip_address
-        begin_port = client.begin_port
-
-        client_info.append([client.amount, address, begin_port])
-
-        for i in range(0, client.amount):
-            if address not in addresses and class_index is not None:
-                addresses.append(address)
-            else:
-                pass
-                # json_data["quality_class"] = None
-            json_data["name"] = "Client" + address + ":" + str(begin_port + i)
-            client_names.append("Client" + address + ":" + str(begin_port + i))
-            print(json_data)
-            r = requests.put("http://{0}:{1}/startClient".format(address, begin_port + i), data=Json.dumps(json_data, default=lambda x: x.__dict__))
-
-    run_info.append(configuration.json(indent=2))
-
-    return "Benchmark run started"
-
-
-@app.get("/collectResults")
 def collect_results():
     run_count = 0
     path_to_dir = Path().absolute().parent.joinpath(Path("benchmark_run_{0}".format(run_count)))
@@ -224,7 +156,6 @@ def collect_results():
     return "Results Collected"
 
 
-@app.get("/evaluate")
 def evaluate():
 
     number_of_clients = 0
@@ -256,10 +187,10 @@ def evaluate():
 
     max_number_of_cores = 0
     for i in range(number_of_clients):
-        f = open(dirs["raw_dir"] + "/" + client_names[i] + "-resources.csv", 'r')
-        reader = csv.reader(f, delimiter=",")
-        columns = len(next(reader))
-        if max_number_of_cores < columns - 3:
+        with open(dirs["raw_dir"] + "/" + client_names[i] + "-resources.csv", 'r') as f:
+            first_line = f.readline()
+        columns = first_line.count(',') + 1
+    if max_number_of_cores < columns - 3:
             max_number_of_cores = columns - 3
 
     csv_row = ["client_name"]
@@ -273,7 +204,7 @@ def evaluate():
                     "latency_total_max", "latency_total_sd", "latency_sent_mean", "latency_sent_median",
                     "latency_sent_min", "latency_sent_max", "latency_sent_sd", "latency_rec_mean", "latency_rec_median",
                     "latency_rec_min", "latency_rec_max", "latency_rec_sd", "total_losses", "losses_in_percent"])
-    with open(result_dir + "/Summary.csv", mode="w") as file:
+    with open(result_dir + "/Summary.csv", mode="x") as file:
         csv_writer = csv.writer(file, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL)
         csv_writer.writerow(csv_row)
 
@@ -351,11 +282,9 @@ def evaluate():
         fig.savefig(result_dir + "/latency-" + client_names[i] + "-combined.pdf")
         plt.close(fig)
 
-        f = open(dirs["raw_dir"] + "/" + client_names[i] + "-resources.csv", 'r')
-        reader = csv.reader(f, delimiter=",")
-        columns = len(next(reader))
-        del reader
-        del f
+        with open(dirs["raw_dir"] + "/" + client_names[i] + "-resources.csv", 'r') as f:
+            first_line = f.readline()
+        columns = first_line.count(',') + 1
         my_cols = []
         for j in range(columns - 3):
             my_cols.append("cpu_total_core{0}".format(j))
@@ -643,6 +572,84 @@ def evaluate():
         csv_writer.writerow(csv_row_last)
 
     return "Evaluation complete"
+
+
+@app.put('/startBenchmark')
+def start_benchmark(configuration: Configuration):
+    client_info.clear()
+    run_info.clear()
+    topic_receivers.clear()
+
+    protocol = configuration.protocol
+
+    # start time in iso 8601
+    if configuration.start_time is not None:
+        start_time = configuration.start_time
+        start_time = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S%z').timestamp() + configuration.delay
+    else:
+        start_time = time.time() + configuration.delay
+        # start_time = datetime.fromtimestamp(int(time.time()) + configuration.delay).isoformat()
+
+    run_time = configuration.run_time
+
+    # save run and start time
+    run_info.append(run_time)
+    run_info.append(start_time)
+
+    broker_address = configuration.broker_address
+
+    quality_classes = configuration.quality_classes
+
+    roles = configuration.roles
+
+    clients = configuration.clients
+
+    json_data = {"protocol": protocol, "start_time": start_time, "run_time": run_time, "broker_address": broker_address}
+
+    addresses = []
+
+    for client in clients:
+        json_data["role"] = roles[int(client.role)]
+        class_index = client.quality_class
+        if class_index is not None:
+            json_data["quality_class"] = quality_classes[class_index]
+        if client.settings is not None:
+            json_data["settings"] = client.settings
+
+        for subscription in json_data["role"].subscriptions:
+            if topic_receivers.get(subscription.topic) is None:
+                topic_receivers[subscription.topic] = client.amount
+            else:
+                topic_receivers[subscription.topic] += client.amount
+
+        address = client.ip_address
+        begin_port = client.begin_port
+
+        client_info.append([client.amount, address, begin_port])
+
+        for i in range(0, client.amount):
+            if address not in addresses and class_index is not None:
+                addresses.append(address)
+            else:
+                pass
+                # json_data["quality_class"] = None
+            json_data["name"] = "Client" + address + ":" + str(begin_port + i)
+            client_names.append("Client" + address + ":" + str(begin_port + i))
+            print(json_data)
+            r = requests.put("http://{0}:{1}/startClient".format(address, begin_port + i), data=Json.dumps(json_data, default=lambda x: x.__dict__))
+
+    run_info.append(configuration.json(indent=2))
+    time_delta = math.ceil(start_time - time.time())
+    print(run_time)
+    print(time_delta)
+    print(int(time_delta) + int(run_time) + 5)
+    time.sleep(int(time_delta) + int(run_time) + 5)
+
+    print(collect_results())
+
+    print(evaluate())
+
+    return "Benchmark run completed"
 
 
 def get_id_of_latest_run():

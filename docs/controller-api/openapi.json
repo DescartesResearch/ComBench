@@ -57,38 +57,6 @@
         }
       }
     },
-    "/collectResults": {
-      "get": {
-        "summary": "Collect Results",
-        "operationId": "collect_results_collectResults_get",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          }
-        }
-      }
-    },
-    "/evaluate": {
-      "get": {
-        "summary": "Evaluate",
-        "operationId": "evaluate_evaluate_get",
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
-              }
-            }
-          }
-        }
-      }
-    },
     "/results/all_results": {
       "get": {
         "summary": "Get All Results",
@@ -297,10 +265,10 @@
         }
       }
     },
-    "/raw_date/network": {
+    "/raw_data/network": {
       "get": {
         "summary": "Get Raw Network",
-        "operationId": "get_raw_network_raw_date_network_get",
+        "operationId": "get_raw_network_raw_data_network_get",
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -421,6 +389,110 @@
       "get": {
         "summary": "Get Ram Graph",
         "operationId": "get_ram_graph_results_ram_graphs__run_id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Run Id"
+            },
+            "name": "run_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/results/bytes_graphs": {
+      "get": {
+        "summary": "Get Bytes Graph",
+        "operationId": "get_bytes_graph_results_bytes_graphs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/results/bytes_graphs/{run_id}": {
+      "get": {
+        "summary": "Get Bytes Graph",
+        "operationId": "get_bytes_graph_results_bytes_graphs__run_id__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Run Id"
+            },
+            "name": "run_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/results/packets_graphs": {
+      "get": {
+        "summary": "Get Packets Graph",
+        "operationId": "get_packets_graph_results_packets_graphs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/results/packets_graphs/{run_id}": {
+      "get": {
+        "summary": "Get Packets Graph",
+        "operationId": "get_packets_graph_results_packets_graphs__run_id__get",
         "parameters": [
           {
             "required": true,
