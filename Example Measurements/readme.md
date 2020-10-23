@@ -13,7 +13,7 @@ increasing load. Here we increased the number of clients through the horizontal
 scaling as described in the SPECjms2007 design notes. The scaling factors 1, 5,
 10, 15, 20, 30, 40, 45, 50, and 55 were used.
 
-![alternative Text](../images/broker-resilience.png)
+![alternative Text](../images/broker-resilience.png =250x)
 
 ## Protocol Efficiency
 This scenario is aimed to analyze the efficiency of the MQTT, AMQP, and CoAP 
