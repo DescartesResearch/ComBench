@@ -183,7 +183,7 @@ The description of the clients is done via the `clients` list. Here an IP addres
 
 ### Starting the Benchmark
 
-To start the benchmark run a PUT request containing the configuration has to be sent to `http://<benchmark-controller>:5000/startBenchmark`. After the specified seconds in `runtime` from the specified start time the benchmark run stops and the measuring results can be collected from the benchmark controller and then evaluated via GET requestes to `http://<benchmark-controller>:5000/collectResults` and then `http://<benchmark-controller>:5000/evaluate`. After the evalution is finished the results can be acquired through the following methods.
+To start the benchmark run a PUT request containing the configuration has to be sent to `http://<benchmark-controller>:5000/startBenchmark`. After the specified seconds in `runtime` from the specified start time the benchmark run stops and the measuring results are collected from the benchmark controller and then evaluated. After the evaluation is finished the results can be acquired through the following methods.
 
 ## Reporting and Benchmark Results
 
@@ -483,14 +483,7 @@ The configuration that was used is written in the file `BenchmarkConfiguration.j
 
 ```
 
-Since all parts of the benchmark in this example are run on the same machine the benchmark controller can access the benchmark clients through the docker bridge via the ip address `172.17.0.1`. Once the benchmark stops sending messages the measurement results have to be collected by the benchmark controller and evaluated. For this the following pyhton script can be used:
-
-```python
-import requests
-
-r = requests.get("http://localhost:5000/collectResults")
-r2 = requests.get("http://localhost:5000/evaluate")
-```
+Since all parts of the benchmark in this example are run on the same machine the benchmark controller can access the benchmark clients through the docker bridge via the ip address `172.17.0.1`. Once the benchmark stops sending messages the measurement results have to be collected by the benchmark controller and evaluated. After the evaluation of the benchmark run the results can be accesed via the requests described in "Metrics", for example to get all results `localhost:5000/results/all_results` can be called in a browser on the host machine.
 
 After the evaluation of the benchmark run the results can be accesed via the requests described in "Metrics", for example to get all results `localhost:5000/results/all_results` can be called in a browser on the host machine.
 
