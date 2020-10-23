@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+
+  controller:
+    image: "descartesresearch/iot-pubsub-benchmark-controller:latest"
+    ports:
+      - "5000:5000"
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  client1:
+    image: "descartesresearch/iot-pubsub-benchmark-client:latest"
+    ports:
+      - "5001:5000"
+    privileged: true
+    cap_add:
+      - ALL
+    volumes:
+      - /dev:/dev
+      - /lib/modules:/lib/modules
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  client2:
+    image: "descartesresearch/iot-pubsub-benchmark-client:latest"
+    ports:
+      - "5002:5000"
+    privileged: true
+    cap_add:
+      - ALL
+    volumes:
+      - /dev:/dev
+      - /lib/modules:/lib/modules
+    environment:
+      - PYTHONUNBUFFERED=1
