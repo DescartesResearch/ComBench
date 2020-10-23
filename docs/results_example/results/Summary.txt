@@ -1,0 +1,107 @@
+##### Resource Measurement Results ######
+
+Results from: Client172.17.0.1:5001
+
+Mean of total CPU load core0: 3.1566666666666667
+Standard deviation of total CPU load core0: 4.957034940596935
+Mean of total CPU load core1: 3.566666666666667
+Standard deviation of total CPU load core1: 4.882010138099443
+Mean of total CPU load core2: 2.0733333333333333
+Standard deviation of total CPU load core2: 1.417363587873586
+Mean of total CPU load core3: 3.1433333333333335
+Standard deviation of total CPU load core3: 3.1407975412946145
+Mean of total CPU load core4: 2.75
+Standard deviation of total CPU load core4: 3.347026472392555
+Mean of total CPU load core5: 3.7333333333333334
+Standard deviation of total CPU load core5: 4.53236128861929
+Mean of total CPU load core6: 3.113333333333333
+Standard deviation of total CPU load core6: 3.587500650806941
+Mean of total CPU load core7: 3.6399999999999997
+Standard deviation of total CPU load core7: 4.354118145800157
+Mean of CPU load of process: 1.2666666666666666
+Standard deviation of CPU load of process: 0.639683829949492
+Mean of total RAM load: 61.58
+Standard deviation of total RAM load: 0.04842341981115091
+Mean of RAM usage of process (MB): 44.23679999999998
+Standard deviation of RAM usage of process (MB): 2.1680689359681415e-14
+
+Total received messages: 76
+Total sent messages: 75
+Average received messages: 152.0
+Average sent messages: 150.0
+Mean Latency (µs): 1.3213228079470198
+Median Latency (µs): 1.376256
+Minimum Latency (µs): 0.416768
+Maximum Latency (µs): 2.079488
+Latency Standard Deviation (µs): 0.4524920982052573
+Mean Latency (µs) of sent messages: 1.2444979200000001
+Median Latency (µs) of sent messages: 1.307648
+Minimum Latency (µs) of sent messages: 0.421376
+Maximum Latency (µs) of sent messages: 1.947136
+Latency Standard Deviation (µs) of sent messages: 0.38120111141743196
+Mean Latency (µs) of received messages: 1.3971368421052632
+Median Latency (µs) of received messages: 1.48544
+Minimum Latency (µs) of received messages: 0.416768
+Maximum Latency (µs) of received messages: 2.079488
+Latency Standard Deviation (µs) of received messages: 0.5043758184872613
+
+Results from: Client172.17.0.1:5002
+
+Mean of total CPU load core0: 3.1566666666666667
+Standard deviation of total CPU load core0: 4.957034940596935
+Mean of total CPU load core1: 3.57
+Standard deviation of total CPU load core1: 4.885104029527962
+Mean of total CPU load core2: 2.0733333333333333
+Standard deviation of total CPU load core2: 1.417363587873586
+Mean of total CPU load core3: 3.1366666666666663
+Standard deviation of total CPU load core3: 3.107774825790326
+Mean of total CPU load core4: 2.783333333333333
+Standard deviation of total CPU load core4: 3.3648367622786117
+Mean of total CPU load core5: 3.7333333333333334
+Standard deviation of total CPU load core5: 4.53236128861929
+Mean of total CPU load core6: 3.113333333333333
+Standard deviation of total CPU load core6: 3.587500650806941
+Mean of total CPU load core7: 3.65
+Standard deviation of total CPU load core7: 4.379950401230746
+Mean of CPU load of process: 1.2333333333333334
+Standard deviation of CPU load of process: 0.6789105539243627
+Mean of total RAM load: 61.58
+Standard deviation of total RAM load: 0.04842341981115091
+Mean of RAM usage of process (MB): 43.986944
+Standard deviation of RAM usage of process (MB): 0.0
+
+Total received messages: 75
+Total sent messages: 76
+Average received messages: 150.0
+Average sent messages: 152.0
+Mean Latency (µs): 1.3213228079470198
+Median Latency (µs): 1.376256
+Minimum Latency (µs): 0.416768
+Maximum Latency (µs): 2.079488
+Latency Standard Deviation (µs): 0.4524920982052573
+Mean Latency (µs) of sent messages: 1.3971368421052632
+Median Latency (µs) of sent messages: 1.48544
+Minimum Latency (µs) of sent messages: 0.416768
+Maximum Latency (µs) of sent messages: 2.079488
+Latency Standard Deviation (µs) of sent messages: 0.5043758184872613
+Mean Latency (µs) of received messages: 1.2444979200000001
+Median Latency (µs) of received messages: 1.307648
+Minimum Latency (µs) of received messages: 0.421376
+Maximum Latency (µs) of received messages: 1.947136
+Latency Standard Deviation (µs) of received messages: 0.38120111141743196
+
+
+##### Messaging Results ######
+
+
+Mean Latency (µs): 1.3213228079470198
+Median Latency (µs): 1.376256
+Minimum Latency (µs): 0.416768
+Maximum Latency (µs): 2.079488
+Latency Standard Deviation (µs): 0.4524920982052573
+Total Number of Sent Messages: 151
+Total Number of Received Messages: 151
+Average Sent Messages per Minute: 302.0
+Average Received Messages per Minute: 302.0
+Lost Messages: 0
+Percentage of Lost Messages: 0.0

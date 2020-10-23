@@ -1,0 +1,151 @@
+{
+  "protocol": "MQTT",
+  "delay": 10,
+  "start_time": null,
+  "run_time": 30,
+  "broker_address": "192.168.178.82",
+  "quality_classes": [
+    {
+      "id": 0,
+      "packet_loss": null,
+      "bandwidth": null,
+      "delay": null
+    },
+    {
+      "id": 1,
+      "packet_loss": null,
+      "bandwidth": null,
+      "delay": null
+    }
+  ],
+  "roles": [
+    {
+      "id": 0,
+      "subscriptions": [
+        {
+          "topic": "Temperatur/Schlafzimmer"
+        },
+        {
+          "topic": "Temperatur/K\u00fcche"
+        },
+        {
+          "topic": "Temperatur/Flur"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "Heizung/Schlafzimmer",
+          "payload_size": 10,
+          "trigger": {
+            "type": "response",
+            "subscription": "Temperatur/Schlafzimmer",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": 100
+            }
+          }
+        },
+        {
+          "topic": "Heizung/K\u00fcche",
+          "payload_size": 10,
+          "trigger": {
+            "type": "response",
+            "subscription": "Temperatur/K\u00fcche",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": 100
+            }
+          }
+        },
+        {
+          "topic": "Heizung/Flur",
+          "payload_size": 10,
+          "trigger": {
+            "type": "response",
+            "subscription": "Temperatur/Flur",
+            "timed_variable": {
+              "type": "fixedDelay",
+              "delay": 100
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "subscriptions": [
+        {
+          "topic": "Heizung/Schlafzimmer"
+        },
+        {
+          "topic": "Heizung/K\u00fcche"
+        },
+        {
+          "topic": "Heizung/Flur"
+        }
+      ],
+      "publishings": [
+        {
+          "topic": "Temperatur/K\u00fcche",
+          "payload_size": 2,
+          "trigger": {
+            "type": "interval",
+            "subscription": null,
+            "timed_variable": {
+              "type": "rate",
+              "delay": 1000
+            }
+          }
+        },
+        {
+          "topic": "Temperatur/Schlafzimmer",
+          "payload_size": 2,
+          "trigger": {
+            "type": "interval",
+            "subscription": null,
+            "timed_variable": {
+              "type": "exponentialDistribution",
+              "delay": 1000
+            }
+          }
+        },
+        {
+          "topic": "Temperatur/Flur",
+          "payload_size": 2,
+          "trigger": {
+            "type": "interval",
+            "subscription": null,
+            "timed_variable": {
+              "type": "rate",
+              "delay": 1500
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "ip_address": "172.17.0.1",
+      "begin_port": 5001,
+      "role": 0,
+      "quality_class": 0,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    },
+    {
+      "ip_address": "172.17.0.1",
+      "begin_port": 5002,
+      "role": 1,
+      "quality_class": 1,
+      "amount": 1,
+      "settings": {
+        "qos": 0,
+        "tls": false
+      }
+    }
+  ]
+}
