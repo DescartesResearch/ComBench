@@ -41,20 +41,7 @@ During the benchmark the clients communicate via a central message broker, which
 Several network interferences can be configured for this communication.
 An overview of the architecture of the benchmark is shown in the following figure.
 
-```mermaid
-graph TB;
-  ctrl[Controller]
-  c1[Client 1]
-  c2[Client 2]
-  c3[Client n]
-  broker[Msg. Broker]
-  ctrl --- c1;
-  ctrl --- c2;
-  ctrl --- c3;
-  c1 --- broker;
-  c2 --- broker;
-  c3 --- broker;
-```
+![alternate Text](images/architecture.png)
 
 ## Running the benchmark
 
@@ -139,7 +126,10 @@ Note: You have to select different ports if multiple clients are instantiated on
       "id": 0,
       "packet_loss": 0,
       "bandwidth": "string",
-      "delay": 0
+      "delay": 0,
+      "time_series": [
+        [0,0,"string",0.0]
+      ]
     }
   ],
   "roles": [
