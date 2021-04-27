@@ -1,17 +1,18 @@
-# ComBench2020: A Benchmark for Publish/Subscribe Communication Protocols in IoT Systems
+# ComBench: A Benchmarking Framework for Publish-Subscribe Communication Protocols under Network Limitations
 
 ## Introduction
 
-The repository hosts our IoT communication benchmark *ComBench2020*, focusing on publish/subscribe protocols in the IoT context.
-With this benchmark, communication scenarios with different publish/subscribe network protocols can be tested.
+The repository hosts our IoT communication benchmarking framework *ComBench* for publish/subscribe protocols in the IoT context focusing on constrained networks.
+With this benchmarking framework, communication scenarios with different publish/subscribe network protocols can be tested.
 The application layer protocol to be used can be selected from MQTT, AMQP, and CoAP at the beginning of a measurement.
-The workload can be flexibly defined by a simple configuration. The benchmark provides a controller for central control and evaluation of the measurement results.
+The workload can be flexibly defined by a simple configuration.
+The framework provides a controller for central control and evaluation of the measurement results.
 The provided multi-protocol client can be easily instantiated on multiple nodes, allowing the number of clients to be scaled up. During the measurement, latency, message throughput, and resource consumption are captured.
-When designing the benchmark, one focus was on easy deployment and intuitive operation. Both benchmark controller and clients can, therefore, be started as docker containers.
+When designing the benchmarking framework, one focus was on easy deployment and intuitive operation. Both benchmark controller and clients can, therefore, be started as docker containers.
 
-## Benchmark Features
+## Features
 
-* Benchmarking communication scenarios with the MQTT, AMQP and CoAP protocol
+* benchmarking communication scenarios with the MQTT, AMQP and CoAP protocol
 * flexible workload configuration
 * high scalable number of clients
 * configuration of network quality parameters like packet loss, bandwidth limitation, and delay
@@ -21,7 +22,7 @@ When designing the benchmark, one focus was on easy deployment and intuitive ope
 
 ## Metrics
 
-The Benchmark supports and captures the following metrics:
+The benchmarking framework supports and captures the following metrics:
 
 * latency
 * number of messages
