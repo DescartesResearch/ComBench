@@ -1,4 +1,4 @@
-fastapi==0.48.0
+fastapi==0.65.2
 psutil==5.7.0
 apscheduler==3.6.3
 asyncio_mqtt==0.5.0
