@@ -5,7 +5,7 @@ asyncio_mqtt==0.5.0
 paho-mqtt==1.5.0
 pika==1.1.0
 hypercorn==0.9.2
-starlette==0.27.0
+starlette==0.36.2
 pydantic==1.6.2
 aiocoap==0.3
 aiofiles==0.4.0
